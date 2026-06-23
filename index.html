@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>ANIMI</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <section class="screen screen-camera is-active" id="cameraScreen" aria-label="ANIMI camera">
+        <header class="top-bar">
+          <div>
+            <p class="eyebrow">ANIMI</p>
+            <h1>애니미</h1>
+          </div>
+          <button class="icon-button" id="uploadButton" type="button" aria-label="사진 업로드">
+            <span aria-hidden="true">+</span>
+          </button>
+          <input id="fileInput" type="file" accept="image/*" hidden />
+        </header>
+
+        <div class="camera-stage" id="cameraStage">
+          <video id="cameraFeed" autoplay playsinline muted></video>
+          <img id="previewImage" alt="선택한 사진 미리보기" hidden />
+          <div class="empty-state" id="emptyState">
+            <strong>사람을 고양이로</strong>
+            <span>카메라를 켜거나 사진을 업로드하세요</span>
+          </div>
+        </div>
+
+        <footer class="camera-controls">
+          <button class="secondary-button" id="startCameraButton" type="button">카메라 켜기</button>
+          <button class="shutter-button" id="captureButton" type="button" aria-label="촬영">
+            <span></span>
+          </button>
+          <button class="secondary-button" id="transformButton" type="button" disabled>변환</button>
+        </footer>
+      </section>
+
+      <section class="screen screen-loading" id="loadingScreen" aria-label="AI 변환 중">
+        <div class="loader-wrap">
+          <div class="loader"></div>
+          <p class="eyebrow">ANIMI PILOT</p>
+          <h2>고양이로 변환 중</h2>
+          <p>배경과 조명을 유지하면서 사람 영역을 자연스러운 고양이로 치환합니다.</p>
+        </div>
+      </section>
+
+      <section class="screen screen-result" id="resultScreen" aria-label="변환 결과">
+        <header class="top-bar">
+          <div>
+            <p class="eyebrow">RESULT</p>
+            <h1>변환 결과</h1>
+          </div>
+          <button class="icon-button" id="closeResultButton" type="button" aria-label="다시 촬영">
+            <span aria-hidden="true">×</span>
+          </button>
+        </header>
+
+        <div class="result-stage">
+          <canvas id="resultCanvas"></canvas>
+        </div>
+
+        <div class="result-note">
+          <strong>파일럿 미리보기</strong>
+          <span>현재 버전은 AI API 연결 전 UI 프로토타입입니다.</span>
+        </div>
+
+        <footer class="result-actions">
+          <button class="secondary-button" id="retakeButton" type="button">다시 찍기</button>
+          <button class="primary-button" id="downloadButton" type="button">저장</button>
+          <button class="primary-button" id="shareButton" type="button">공유</button>
+        </footer>
+      </section>
+    </main>
+
+    <script src="./app.js"></script>
+  </body>
+</html>
